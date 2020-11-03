@@ -1,0 +1,21 @@
+name: catalog-seed-action
+description: Seed the catalog with what is in this repo
+inputs:
+  api_url:
+    description: "URL to the api"
+    default: "https://app.koyeb.com"
+    required: false
+  api_username:
+    description: "Username to access the api"
+    required: true
+  api_password:
+    description: "Password to access the api"
+    required: true
+  organization:
+    description: "The name of the organization the image is pushed to"
+    default: "koyeb"
+    required: false
+runs:
+  using: node12
+  main: index.js
+

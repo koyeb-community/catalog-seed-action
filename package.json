@@ -1,0 +1,20 @@
+{
+  "name": "catalog-seed-action",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "js-yaml": "^3.14.0",
+    "markdown-to-json": "^0.5.4",
+    "moment": "^2.29.1",
+    "node-fetch": "^2.6.1",
+    "yaml-front-matter": "^4.1.0"
+  }
+}
