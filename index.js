@@ -12,7 +12,7 @@ const fnSeed = require("./function.js");
             core.info(`${version} is not a valid semver like v1.0.0, skipping seed`)
             return
         }
-        const res = fnSeed.makeCatalogFunction(".", repoName, repoUrl, org, "v1.0.0")
+        const res = await fnSeed.makeCatalogFunction(".", repoName, repoUrl, org, "v1.0.0")
         core.info(JSON.stringify(res))
     } catch (error) {
         core.setFailed(error.message);

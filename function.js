@@ -44,7 +44,7 @@ const makeCatalogFunction = async (repoPath, repoName, repoUrl, dockerOrg, versi
     const readmeMetadata = convertMarkdownToJson(await fs.readFile(path.join(repoPath, "README.md")));
     const tmplYaml = yaml.load(await fs.readFile(path.join(repoPath, "template.yaml")));
     const name = repoName.replace("/", "-");
-    const entry = Object.assign(
+    return Object.assign(
         {},
         {
             name: name,
@@ -58,15 +58,10 @@ const makeCatalogFunction = async (repoPath, repoName, repoUrl, dockerOrg, versi
             website: repoUrl,
             parameters: readmeMetadata.parameters,
             template: readmeMetadata.template,
-            image: readmeMetadata.image,
+            image: readmeMetadata.image || `${dockerOrg}/${repoName}:${version}`,
         },
         tmplYaml
     );
-    if (typeof entry.image === "undefined") {
-        entry.image = `${dockerOrg}/${repoName}:${version}`;
-    }
-
-    return entry
 };
 
 module.exports = {makeCatalogFunction}
