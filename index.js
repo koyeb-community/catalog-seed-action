@@ -11,7 +11,7 @@ const seed = async (apiUrl, loginPayload, payload) => {
         }
     }
     try {
-        await axios.post(`${apiUrl}/v1/internal/storage/seed`, payload, opts)
+        await axios.post(`${apiUrl}/v1/internal/storage/seed`, payload, Object.assign({}, opts))
     } finally {
         await axios.delete(`${apiUrl}/v1/account/logout`, opts)
     }
@@ -34,8 +34,8 @@ const seed = async (apiUrl, loginPayload, payload) => {
         core.info(`Seeding with: ${JSON.stringify(catalogDef, null, 2)}`)
         await seed(apiUrl, loginPayload, {"catalog_functions": [catalogDef]})
     } catch (error) {
-        if (error.data) {
-           core.error(`Request failed with data: ${error.data}`)
+        if (error.response) {
+           core.error(`Request failed with response: ${JSON.stringify(error.response.data, null, 2)}`)
         }
         core.setFailed(error);
     }
