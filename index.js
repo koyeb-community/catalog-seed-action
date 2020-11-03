@@ -8,8 +8,8 @@ const fnSeed = require("./function.js");
         const repoName = process.env.GITHUB_REPOSITORY.split("/")[1]
         const repoUrl = `${process.env.GITHUB_SERVER_URL}/${process.env.GITHUB_REPOSITORY}`
         const version = process.env.GITHUB_REF.replace("refs/tags/", "")
-        if (!/v[0-9]+\.[0-9]+\.[0.9]+/.test(version)) {
-            core.setFailed(`${version} is not a valid semver like v1.0.0`)
+        if (!/^v[0-9]+\.[0-9]+\.[0-9]+$/.test(version)) {
+            core.info(`${version} is not a valid semver like v1.0.0, skipping seed`)
             return
         }
         const res = fnSeed.makeCatalogFunction(".", repoName, repoUrl, org, "v1.0.0")
