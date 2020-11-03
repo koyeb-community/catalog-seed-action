@@ -31,8 +31,9 @@ const seed = async (apiUrl, loginPayload, payload) => {
             return
         }
         const catalogDef = await fnSeed.makeCatalogFunction(".", repoName, repoUrl, org, version)
+        core.info(`Seeding with: ${catalogDef}`)
         await seed(apiUrl, loginPayload, {"catalog_functions": [catalogDef]})
     } catch (error) {
-        core.setFailed(error.message);
+        core.setFailed(error);
     }
 })();
