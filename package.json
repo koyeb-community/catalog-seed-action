@@ -11,10 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "@actions/core": "^1.2.6",
+    "axios": "^0.21.0",
     "js-yaml": "^3.14.0",
     "markdown-to-json": "^0.5.4",
     "moment": "^2.29.1",
-    "node-fetch": "^2.6.1",
     "yaml-front-matter": "^4.1.0"
   }
 }
